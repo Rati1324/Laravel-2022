@@ -15,11 +15,7 @@ class LogInController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required',
         ]);
-
         auth()->attempt($request->only('email', 'password'));
-
-        $request->session()->put('email', $request->email);
-
         return redirect()->route('home');
     }
 }
